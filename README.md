@@ -1,0 +1,2 @@
+# myMake
+A make clone 
