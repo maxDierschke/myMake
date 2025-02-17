@@ -1,0 +1,6 @@
+build/my_own_make : build/main.o build/rule_executor.o build/rule_types.o : g++ -std=c++2a -o build/my_own_make build/main.o build/rule_executor.o build/rule_types.o
+build/main.o : src/main.cpp src/rule_executor.h  src/rule_types.h : g++ -std=c++2a -c -o build/main.o src/main.cpp
+build/rule_executor.o : src/rule_executor.cpp src/rule_executor.h src src/rule_types.h : g++ -std=c++2a -c -o build/rule_executor.o src/rule_executor.cpp
+build/rule_types.o : src/rule_types.cpp src/rule_types.h :  g++ -std=c++2a -c -o build/rule_types.o src/rule_types.cpp
+format : : find src -iname '*.h' -o -iname '*.cpp' | xargs clang-format -i
+clean : : rm build/*
